@@ -2,11 +2,22 @@ package com.skilldistillery.foodtruck.app;
 
 import java.util.Scanner;
 
+import com.skilldistillery.foodtruck.entities.FoodTruck;
+
 public class FoodTruckApp {
 
+//	private int numFoodTrucks;
+	private FoodTruck[] foodTrucks = new FoodTruck[5];
+
+//	private final int MAX_FOODTRUCKS = 5;
+
 	public static void main(String[] args) {
-		// array of food trucks (fleet), menu, don't ask user for id, id will not be
-		// parameter to any methods. id will only be displayed
+		FoodTruckApp app = new FoodTruckApp();
+		app.run();
+
+	}
+
+	public void run() {
 		Scanner sc = new Scanner(System.in);
 
 		String quit = "quit";
@@ -22,7 +33,6 @@ public class FoodTruckApp {
 			String name = sc.nextLine();
 
 			System.out.println(name);
-
 			if (name.equalsIgnoreCase(quit)) {
 				break;
 			}
@@ -38,6 +48,8 @@ public class FoodTruckApp {
 			System.out.println(rating);
 			sc.nextLine();
 
+			FoodTruck tempFoodTruck = new FoodTruck(name, foodType, rating);
+			foodTrucks[i] = tempFoodTruck;
 		}
 
 		// menu
@@ -57,6 +69,16 @@ public class FoodTruckApp {
 			if (selection.equals("1")) {
 				System.out.println("food truck listing");
 				System.out.println();
+
+				// loop
+				for (int i = 0; i < 5; i++) {
+					if (foodTrucks[i].getName() != null) {
+
+						System.out.println(foodTrucks[i].getName());
+
+					}
+				}
+
 				continue;
 			}
 
@@ -83,6 +105,21 @@ public class FoodTruckApp {
 		}
 
 		sc.close();
-	}
 
+	}
+	// code from Parking Lot Example below
+
+	/*
+	 * useful public void displayFoodTrucks() { for (FoodTruck foodTruck :
+	 * foodTrucks) { if (foodTruck != null) { System.out.println("We have these " +
+	 * foodTruck.getName()); } } }
+	 * 
+	 * public FoodTruck[] getFoodTrucks() { FoodTruck[] lotCopy = new
+	 * FoodTruck[foodTrucks.length]; for (int i = 0; i < foodTrucks.length; i++) {
+	 * lotCopy[i] = foodTrucks[i]; } return foodTrucks; } useful /* public void
+	 * addFoodTruck(FoodTruck foodTruckToAdd) { if (numFoodTrucks == MAX_FOODTRUCKS)
+	 * { System.out.println("No more food trucks."); } else { for (int spot = 0;
+	 * spot < MAX_FOODTRUCKS; spot++) { if (foodTrucks[spot] == null) {
+	 * foodTrucks[spot] = foodTruckToAdd; numFoodTrucks++; break; } } } }
+	 */
 }
