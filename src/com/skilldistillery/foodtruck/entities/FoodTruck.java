@@ -1,13 +1,13 @@
 package com.skilldistillery.foodtruck.entities;
 
-
-
 public class FoodTruck {
 	private static int nextTruckId = 0;
 	private String name;
 	private String foodType;
 	private double rating;
 	private int truckId;
+	
+	public FoodTruck( ) {}
 
 	public FoodTruck(String name, String foodType, double rating) {
 
@@ -19,7 +19,7 @@ public class FoodTruck {
 	}
 
 	public int getNextTruckId() {
-		
+
 		return nextTruckId;
 	}
 
@@ -50,10 +50,5 @@ public class FoodTruck {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
-	
-
-
-
-	
 
 }
