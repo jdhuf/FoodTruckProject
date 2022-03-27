@@ -50,5 +50,25 @@ public class FoodTruck {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
+	
+	public String toString() {
+		String output = "name = " + name + ", food type = " + foodType + ", rating = " + rating;
+		return output;
+	}
+	
+	public void displayAverageRating() {
+		for (int i = 0; i < 5; i++) {
+			int numOfFoodTrucks = max entry num or num of f
+					averageRating = sum of ratings / max entry num
+		}
+	}
 
+	public void displayFoodTruck() {
+		String truckData = toString();
+		System.out.println(truckData);
+	}
+	
+	
 }
+
+

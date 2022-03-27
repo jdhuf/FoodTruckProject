@@ -2,7 +2,8 @@ package com.skilldistillery.foodtruck.app;
 
 import java.util.Scanner;
 
-//import com.skilldistillery.foodtruck.entities.FoodTruck;
+
+import com.skilldistillery.foodtruck.entities.FoodTruck;
 
 public class FoodTruckApp {
 
@@ -13,15 +14,15 @@ public class FoodTruckApp {
 		app.run();
 
 	}
-	
 
-
+	// app run
 	public void run() {
+
 		Scanner sc = new Scanner(System.in);
 
 		String quit = "quit";
 
-		// loop
+		// initial loop
 		for (int i = 0; i < 5; i++) {
 
 			System.out.println("Please enter requested information for your food truck. \n"
@@ -43,12 +44,16 @@ public class FoodTruckApp {
 
 			// rating
 			System.out.println("What is the rating of the food truck? \n" + "(0 is the worst and ten is the best)");
-			double rating = sc.nextInt();
+			
+			
+			double rating = sc.nextDouble();
 			System.out.println(rating);
 			sc.nextLine();
 
 			FoodTruck tempFoodTruck = new FoodTruck(name, foodType, rating);
 			foodTrucks[i] = tempFoodTruck;
+			
+		//    System.out.println(foodTrucks[i].getName());
 		}
 
 		// menu
@@ -69,21 +74,23 @@ public class FoodTruckApp {
 				System.out.println("food truck listing");
 				System.out.println();
 
-				// loop
-				for (int i = 0; i < 5; i++) {
-					if (foodTrucks[i].getName() != null) {
-
-						System.out.println(foodTrucks.getName());
-
+				for (int i = 0; i < foodTrucks.length; i++) {
+					//if (foodTrucks[i].getName() != null) {
+					System.out.println(foodTrucks[i].getName());
 					}
-				}
-
+			//	}
 				continue;
 			}
 
 			if (selection.equals("2")) {
 				System.out.println("average rating");
 				System.out.println();
+				
+				for (int i = 0; i < foodTrucks.length; i++) {
+					//if (foodTrucks[i].getName() != null) {
+					System.out.println(foodTrucks[i].getRating());
+					}
+				
 				continue;
 			}
 
@@ -101,11 +108,9 @@ public class FoodTruckApp {
 				System.out.println("Invalid entry.");
 				System.out.println();
 			}
+
 		}
-
 		sc.close();
-
 	}
 
 }
-// code from Parking Lot Example below
