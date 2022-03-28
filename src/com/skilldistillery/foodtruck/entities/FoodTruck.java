@@ -6,8 +6,9 @@ public class FoodTruck {
 	private String foodType;
 	private double rating;
 	private int truckId;
-	
-	public FoodTruck( ) {}
+
+	public FoodTruck() {
+	}
 
 	public FoodTruck(String name, String foodType, double rating) {
 
@@ -50,18 +51,15 @@ public class FoodTruck {
 	public void setRating(double rating) {
 		this.rating = rating;
 	}
-	
+
 	public String toString() {
-		return "name = " + name + ", food type = " + foodType + ", rating = " + rating
-				+ " Id = " + truckId;
+		return "Name = " + name + ", Food Type = " + foodType + ", Rating = " + rating + " Id = " + truckId;
 	}
-	
+
 	public void displayFoodTruck() {
 		String truckData = toString();
 		System.out.println(truckData);
+
 	}
-	
-	
+
 }
-
-

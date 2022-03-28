@@ -9,6 +9,7 @@ public class FoodTruckApp {
 	private FoodTruck[] foodTrucks = new FoodTruck[5];
 
 	public static void main(String[] args) {
+
 		FoodTruckApp app = new FoodTruckApp();
 		app.run();
 
@@ -22,36 +23,49 @@ public class FoodTruckApp {
 		String quit = "quit";
 
 		// initial loop
+
 		for (int i = 0; i < 5; i++) {
 
-			System.out.println("Please enter requested information for your food truck. \n"
-					+ "Enter \"quit\" for the food truck name to proceed to the menu.\n");
-
+			System.out.println("Please enter requested information for your food truck.");
+			System.out.println();
+			System.out.println("Enter \"quit\" for the food truck name to proceed to the menu.");
+			System.out.println();
 			// name
 			System.out.println("What is the name of the food truck?");
 			String name = sc.nextLine();
 
 			System.out.println(name);
+			System.out.println();
 			if (name.equalsIgnoreCase(quit)) {
 				break;
 			}
 
 			// food type
+
 			System.out.println("What is the food type of the food truck?");
 			String foodType = sc.nextLine();
 			System.out.println(foodType);
 
 			// rating
+
 			System.out.println("What is the rating of the food truck? \n" + "(0 is the worst and 10 is the best)");
 
 			double rating = sc.nextDouble();
-			System.out.println(rating);
+
+			if (rating < 0.0 || rating > 10) {
+				System.out.println("Invalid Entry. Please try again.");
+			}
+
+			else {
+				System.out.println(rating);
+			}
+
 			sc.nextLine();
 
 			FoodTruck tempFoodTruck = new FoodTruck(name, foodType, rating);
 			foodTrucks[i] = tempFoodTruck;
+			System.out.println();
 
-			// System.out.println(foodTrucks[i].getName());
 		}
 
 		// menu
@@ -61,7 +75,7 @@ public class FoodTruckApp {
 		while (true) {
 			System.out.println("Please select a number from the Menu below.");
 			System.out.println("1: List all existing food trucks.");
-			System.out.println("2: See the average rating of food trucks.");
+			System.out.println("2: See the average of all the food trucks' ratings.");
 			System.out.println("3: Display the highest-rated food truck.");
 			System.out.println("4: Quit the program.");
 			System.out.println();
@@ -69,94 +83,74 @@ public class FoodTruckApp {
 			selection = sc.next();
 
 			if (selection.equals("1")) {
-				System.out.println("food truck listing");
+				System.out.println("List of all food trucks:");
 				System.out.println();
 
-			//	for (FoodTruck tempTruck : foodTrucks)
-				
-				for (int i =0; i < foodTrucks.length; i++) {
+				for (int i = 0; i < foodTrucks.length; i++) {
 					if (foodTrucks[i] == null) {
-						
-				}	else {
-					System.out.println(foodTrucks[i]);
-				}
-					
-			//		if (tempTruck != null) {
-			//			System.out.println(tempTruck.getName());
 
+					} else {
+						System.out.println(foodTrucks[i]);
+						System.out.println();
 					}
+
+				}
 
 				continue;
 			}
 
-			
-			
 			if (selection.equals("2")) {
-				
-				double sumOfRatings = 0;
+
+				double sumOfRatings = 0.0;
 				int numOfRatings = 0;
-				double averageRating = 0;
-				
-				System.out.println("average rating");
-				System.out.println();
-				
+				double averageRating = 0.0;
+
+				System.out.println("Average of food truck ratings:");
 				sc.nextLine();
 
-				
-
 				for (FoodTruck tempRating : foodTrucks) {
-					
-					
-					
-					if (tempRating != null) {
-					numOfRatings++;
-					sumOfRatings += tempRating.getRating();
-					
-					
-					//	System.out.println(sumOfRatings);
-					//	System.out.println(numOfRatings);
-					//	System.out.println(totalNumOfRatings);
-						
-						//System.out.println (sumOfRatings / numOfRatings);
-					}
-					//System.out.println (sumOfRatings / numOfRatings);
-					averageRating = (sumOfRatings /numOfRatings);
-				
-				}
-				
-				System.out.println(averageRating);
 
+					if (tempRating != null) {
+						numOfRatings++;
+						sumOfRatings += tempRating.getRating();
+
+					}
+
+					averageRating = (sumOfRatings / numOfRatings);
+
+				}
+
+				System.out.println(averageRating);
+				System.out.println();
 
 				continue;
 			}
-			// min max in prework jfob advanced for loops solutions
 
 			if (selection.equals("3")) {
-				
-				double highestRating = 0;
-	
-				double currentRating = 0;
-				
+
+				double highestRating = 0.0;
+
+				double currentRating = 0.0;
+
 				FoodTruck bestTruck = new FoodTruck();
-				
-				
+
 				for (FoodTruck foodTruck : foodTrucks) {
-					
+
 					if (foodTruck != null) {
-						
+
 						currentRating = foodTruck.getRating();
-						//8                7
-						if ( currentRating > highestRating) {
+
+						if (currentRating > highestRating) {
 							highestRating = currentRating;
 							bestTruck = foodTruck;
 						}
-						
-						
 					}
 				}
-				
-				System.out.println("highest-rated");
+
+				System.out.println("Highest-rated food truck: ");
+				System.out.println();
 				System.out.println(bestTruck.toString());
+				System.out.println();
 				continue;
 
 			}
