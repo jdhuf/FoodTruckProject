@@ -45,26 +45,22 @@ public class FoodTruckApp {
 			System.out.println("What is the food type of the food truck?");
 			String foodType = sc.nextLine();
 			System.out.println(foodType);
+			System.out.println();
 
 			// rating
 
-			System.out.println("What is the rating of the food truck? \n" + "(0 is the worst and 10 is the best)");
+			System.out.println("What is the rating of the food truck?)");
+			System.out.println("Please enter a number 0 to 10.");
+			System.out.println("(0 is the worst and 10 is the best)");
 
 			double rating = sc.nextDouble();
 
-			if (rating < 0.0 || rating > 10) {
-				System.out.println("Invalid Entry. Please try again.");
-			}
-
-			else {
-				System.out.println(rating);
-			}
-
+			System.out.println(rating);
+			System.out.println();
 			sc.nextLine();
 
 			FoodTruck tempFoodTruck = new FoodTruck(name, foodType, rating);
 			foodTrucks[i] = tempFoodTruck;
-			System.out.println();
 
 		}
 
