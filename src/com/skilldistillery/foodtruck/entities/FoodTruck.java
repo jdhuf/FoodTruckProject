@@ -1,7 +1,7 @@
 package com.skilldistillery.foodtruck.entities;
 
 public class FoodTruck {
-	private static int nextTruckId = 0;
+	private static int nextTruckId = 10;
 	private String name;
 	private String foodType;
 	private double rating;
@@ -11,11 +11,11 @@ public class FoodTruck {
 
 	public FoodTruck(String name, String foodType, double rating) {
 
-		this.truckId = nextTruckId;
 		this.name = name;
 		this.foodType = foodType;
 		this.rating = rating;
-		nextTruckId = nextTruckId++;
+		this.truckId = nextTruckId;
+		nextTruckId++;
 	}
 
 	public int getNextTruckId() {
@@ -52,17 +52,10 @@ public class FoodTruck {
 	}
 	
 	public String toString() {
-		String output = "name = " + name + ", food type = " + foodType + ", rating = " + rating;
-		return output;
+		return "name = " + name + ", food type = " + foodType + ", rating = " + rating
+				+ " Id = " + truckId;
 	}
 	
-	public void displayAverageRating() {
-		for (int i = 0; i < 5; i++) {
-			int numOfFoodTrucks = max entry num or num of f
-					averageRating = sum of ratings / max entry num
-		}
-	}
-
 	public void displayFoodTruck() {
 		String truckData = toString();
 		System.out.println(truckData);

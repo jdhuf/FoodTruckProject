@@ -2,7 +2,6 @@ package com.skilldistillery.foodtruck.app;
 
 import java.util.Scanner;
 
-
 import com.skilldistillery.foodtruck.entities.FoodTruck;
 
 public class FoodTruckApp {
@@ -43,17 +42,16 @@ public class FoodTruckApp {
 			System.out.println(foodType);
 
 			// rating
-			System.out.println("What is the rating of the food truck? \n" + "(0 is the worst and ten is the best)");
-			
-			
+			System.out.println("What is the rating of the food truck? \n" + "(0 is the worst and 10 is the best)");
+
 			double rating = sc.nextDouble();
 			System.out.println(rating);
 			sc.nextLine();
 
 			FoodTruck tempFoodTruck = new FoodTruck(name, foodType, rating);
 			foodTrucks[i] = tempFoodTruck;
-			
-		//    System.out.println(foodTrucks[i].getName());
+
+			// System.out.println(foodTrucks[i].getName());
 		}
 
 		// menu
@@ -74,29 +72,91 @@ public class FoodTruckApp {
 				System.out.println("food truck listing");
 				System.out.println();
 
-				for (int i = 0; i < foodTrucks.length; i++) {
-					//if (foodTrucks[i].getName() != null) {
-					System.out.println(foodTrucks[i].getName());
+			//	for (FoodTruck tempTruck : foodTrucks)
+				
+				for (int i =0; i < foodTrucks.length; i++) {
+					if (foodTrucks[i] == null) {
+						
+				}	else {
+					System.out.println(foodTrucks[i]);
+				}
+					
+			//		if (tempTruck != null) {
+			//			System.out.println(tempTruck.getName());
+
 					}
-			//	}
+
 				continue;
 			}
 
+			
+			
 			if (selection.equals("2")) {
+				
+				double sumOfRatings = 0;
+				int numOfRatings = 0;
+				double averageRating = 0;
+				
 				System.out.println("average rating");
 				System.out.println();
 				
-				for (int i = 0; i < foodTrucks.length; i++) {
-					//if (foodTrucks[i].getName() != null) {
-					System.out.println(foodTrucks[i].getRating());
-					}
+				sc.nextLine();
+
 				
+
+				for (FoodTruck tempRating : foodTrucks) {
+					
+					
+					
+					if (tempRating != null) {
+					numOfRatings++;
+					sumOfRatings += tempRating.getRating();
+					
+					
+					//	System.out.println(sumOfRatings);
+					//	System.out.println(numOfRatings);
+					//	System.out.println(totalNumOfRatings);
+						
+						//System.out.println (sumOfRatings / numOfRatings);
+					}
+					//System.out.println (sumOfRatings / numOfRatings);
+					averageRating = (sumOfRatings /numOfRatings);
+				
+				}
+				
+				System.out.println(averageRating);
+
+
 				continue;
 			}
+			// min max in prework jfob advanced for loops solutions
 
 			if (selection.equals("3")) {
+				
+				double highestRating = 0;
+	
+				double currentRating = 0;
+				
+				FoodTruck bestTruck = new FoodTruck();
+				
+				
+				for (FoodTruck foodTruck : foodTrucks) {
+					
+					if (foodTruck != null) {
+						
+						currentRating = foodTruck.getRating();
+						//8                7
+						if ( currentRating > highestRating) {
+							highestRating = currentRating;
+							bestTruck = foodTruck;
+						}
+						
+						
+					}
+				}
+				
 				System.out.println("highest-rated");
-				System.out.println();
+				System.out.println(bestTruck.toString());
 				continue;
 
 			}
